@@ -19,10 +19,15 @@ public class InsertionSort {
      * @param k index of element to be inserted
      */
     private static void insert(int[] xs, int k) {
-        /*
-            Complete code here. You must call `swap()` method in `Utils`.
-         */
-        throw new RuntimeException("Not implemented yet."); // Remove this line when you implement this method.
+        // swap 사용해서 insertionSort 구현하기 
+        for (int i = 1; i < xs.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if(xs[j] > xs[j-1]) { // 뒤에게 앞에거보다 작으면 옮겨야됨
+                    Utils.swap(xs, j-1, j);
+                }
+            }
+        }
+
     }
 
 }

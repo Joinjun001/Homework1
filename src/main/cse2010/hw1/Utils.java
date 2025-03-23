@@ -12,7 +12,7 @@ public class Utils {
         // 하나씩 훑으면서찾고, 있으면 index 없으면 -1 리턴 
         int temp;
         int result = -1;
-        for (int i =0;i<= xs.length;i++) {
+        for (int i =0;i< xs.length;i++) {
             temp = xs[i];
             if (temp == target) {
                 result = i;
@@ -27,8 +27,13 @@ public class Utils {
      * @return sum of an array
      */
     public static double sum(double[] xs) {
+        // result 하나 만들고 차곡차곡 쌓으면 될듯
+        double result = 0;
 
-        return 0.0;
+        for (int i = 0; i < xs.length; i++) {
+            result += xs[i];
+        } 
+        return result;
     }
 
     /**
@@ -37,8 +42,13 @@ public class Utils {
      * @return a newly created array containing elements of xs in reversed order
      */
     public static String[] reverse(String[] xs) {
-
-        return null;
+        // 새로운 배열을 만든다음, 마지막인덱스부터 저장하면될듯? 
+        String[] result = new String[xs.length];
+        for (int i = 0; i < xs.length; i++) {
+            result[xs.length - i - 1] = xs[i];
+        }
+        
+        return result;
     }
 
     /**
@@ -66,7 +76,18 @@ public class Utils {
      * @param xs String array
      */
     public static void reverse_in_place(String[] xs) {
-
+        // 이건 어케함?? 새로운 배열을 만들지 않고 안에서 돌려야된다.
+        // 아까 구현한 swap을 사용해도 될거같긴한데, string 전용함수라 직접 만들어야겟다.
+        // for문은 배열의 개수에 따라 중간까지만 가면 되므로 xs.length / 2를 해주면될거같다.
+        
+        for (int i = 0; i < xs.length / 2; i++) {
+            String temp; 
+            int j = xs.length - i -1;
+            temp = xs[i]; // temp = "A"
+            xs[i] = xs[j]; // i = "C" j= "C"
+            xs[j] = temp; // i = "C" j = "A"
+        }
+        
     }
 
     /**
@@ -83,8 +104,18 @@ public class Utils {
      *      2.5 = (1 + 2 + 3 + 4) / 4
      */
     public static double[] average(int[] xs) {
+        
+        double[] result = new double[xs.length];
+        // 이중 반복문을 써야되나??
+        for (int i = 0; i < xs.length; i++) {
+            double temp = 0;
+            for(int j = 0; j <= i; j++) {
+                temp += xs[j];
+            }
+            result[i] = temp / (i + 1);
+        }
 
-        return null;
+        return result;
     }
 
 }
